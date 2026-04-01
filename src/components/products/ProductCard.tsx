@@ -35,10 +35,11 @@ const ProductCard = ({ product }: { product: Product }) => {
         )}
       </Link>
       <div className="p-4">
-        <Link to={productUrl}>
-        <p className="text-xs text-muted-foreground mb-1">{product.category}</p>
-        <h3 className="font-semibold text-sm leading-tight mb-1 line-clamp-2">{product.name}</h3>
-        <p className="text-xs text-muted-foreground mb-3">{product.description}</p>
+        <Link to={productUrl} className="block mb-3">
+          <p className="text-xs text-muted-foreground mb-1">{product.category}</p>
+          <h3 className="font-semibold text-sm leading-tight mb-1 line-clamp-2 group-hover:text-primary transition-colors">{product.name}</h3>
+          <p className="text-xs text-muted-foreground">{product.description}</p>
+        </Link>
         <div className="flex items-center justify-between">
           <div>
             <span className="text-lg font-bold text-primary">${product.price.toFixed(2)}</span>
