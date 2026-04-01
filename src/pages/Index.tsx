@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Truck, Shield, Clock, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ProductCard from "@/components/products/ProductCard";
+import RecommendationsSection from "@/components/products/RecommendationsSection";
 import { products, categories } from "@/data/mockData";
 import heroBg from "@/assets/hero-bg.jpg";
 
