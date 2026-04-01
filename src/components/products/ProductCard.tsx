@@ -33,8 +33,9 @@ const ProductCard = ({ product }: { product: Product }) => {
             <span className="bg-card px-3 py-1 rounded-full text-sm font-medium">Agotado</span>
           </div>
         )}
-      </div>
+      </Link>
       <div className="p-4">
+        <Link to={productUrl}>
         <p className="text-xs text-muted-foreground mb-1">{product.category}</p>
         <h3 className="font-semibold text-sm leading-tight mb-1 line-clamp-2">{product.name}</h3>
         <p className="text-xs text-muted-foreground mb-3">{product.description}</p>
