@@ -1,10 +1,9 @@
-import { Link, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { Package, TrendingUp, Clock, CheckCircle, Truck as TruckIcon } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import ProductCard from "@/components/products/ProductCard";
+import RecommendationsSection from "@/components/products/RecommendationsSection";
 import { useAuth } from "@/context/AuthContext";
-import { orderHistory, recommendations } from "@/data/mockData";
+import { orderHistory } from "@/data/mockData";
 
 const statusConfig = {
   entregado: { label: "Entregado", icon: CheckCircle, className: "bg-success/10 text-success" },
