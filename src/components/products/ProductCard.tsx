@@ -1,15 +1,20 @@
 import { ShoppingCart } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useCart } from "@/context/CartContext";
 import type { Product } from "@/data/mockData";
 
+const slugify = (name: string) =>
+  name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+
 const ProductCard = ({ product }: { product: Product }) => {
   const { addItem } = useCart();
+  const productUrl = `/producto/${product.id}-${slugify(product.name)}`;
 
   return (
     <div className="group rounded-xl border bg-card overflow-hidden transition-shadow hover:shadow-lg">
-      <div className="relative aspect-[4/3] overflow-hidden bg-muted">
+      <Link to={productUrl} className="block relative aspect-[4/3] overflow-hidden bg-muted">
         <img
           src={product.image}
           alt={product.name}
@@ -28,11 +33,13 @@ const ProductCard = ({ product }: { product: Product }) => {
             <span className="bg-card px-3 py-1 rounded-full text-sm font-medium">Agotado</span>
           </div>
         )}
-      </div>
+      </Link>
       <div className="p-4">
-        <p className="text-xs text-muted-foreground mb-1">{product.category}</p>
-        <h3 className="font-semibold text-sm leading-tight mb-1 line-clamp-2">{product.name}</h3>
-        <p className="text-xs text-muted-foreground mb-3">{product.description}</p>
+        <Link to={productUrl} className="block mb-3">
+          <p className="text-xs text-muted-foreground mb-1">{product.category}</p>
+          <h3 className="font-semibold text-sm leading-tight mb-1 line-clamp-2 group-hover:text-primary transition-colors">{product.name}</h3>
+          <p className="text-xs text-muted-foreground">{product.description}</p>
+        </Link>
         <div className="flex items-center justify-between">
           <div>
             <span className="text-lg font-bold text-primary">${product.price.toFixed(2)}</span>
