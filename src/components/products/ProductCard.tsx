@@ -1,15 +1,20 @@
 import { ShoppingCart } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useCart } from "@/context/CartContext";
 import type { Product } from "@/data/mockData";
 
+const slugify = (name: string) =>
+  name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+
 const ProductCard = ({ product }: { product: Product }) => {
   const { addItem } = useCart();
+  const productUrl = `/producto/${product.id}-${slugify(product.name)}`;
 
   return (
     <div className="group rounded-xl border bg-card overflow-hidden transition-shadow hover:shadow-lg">
-      <div className="relative aspect-[4/3] overflow-hidden bg-muted">
+      <Link to={productUrl} className="block relative aspect-[4/3] overflow-hidden bg-muted">
         <img
           src={product.image}
           alt={product.name}
