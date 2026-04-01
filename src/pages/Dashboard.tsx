@@ -1,10 +1,9 @@
-import { Link, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { Package, TrendingUp, Clock, CheckCircle, Truck as TruckIcon } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import ProductCard from "@/components/products/ProductCard";
+import RecommendationsSection from "@/components/products/RecommendationsSection";
 import { useAuth } from "@/context/AuthContext";
-import { orderHistory, recommendations } from "@/data/mockData";
+import { orderHistory } from "@/data/mockData";
 
 const statusConfig = {
   entregado: { label: "Entregado", icon: CheckCircle, className: "bg-success/10 text-success" },
@@ -81,20 +80,7 @@ const Dashboard = () => {
       </section>
 
       {/* Recommendations */}
-      <section>
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="font-display text-xl font-bold">Recomendaciones Especiales para Ti</h2>
-          <Button variant="ghost" size="sm" asChild>
-            <Link to="/catalogo">Ver todo</Link>
-          </Button>
-        </div>
-        <p className="text-sm text-muted-foreground mb-4">Basado en tus compras anteriores</p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {recommendations.map((p) => (
-            <ProductCard key={p.id} product={p} />
-          ))}
-        </div>
-      </section>
+      <RecommendationsSection />
     </div>
   );
 };
