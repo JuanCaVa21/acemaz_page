@@ -80,20 +80,7 @@ const Dashboard = () => {
       </section>
 
       {/* Recommendations */}
-      <section>
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="font-display text-xl font-bold">Recomendaciones Especiales para Ti</h2>
-          <Button variant="ghost" size="sm" asChild>
-            <Link to="/catalogo">Ver todo</Link>
-          </Button>
-        </div>
-        <p className="text-sm text-muted-foreground mb-4">Basado en tus compras anteriores</p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {recommendations.map((p) => (
-            <ProductCard key={p.id} product={p} />
-          ))}
-        </div>
-      </section>
+      <RecommendationsSection />
     </div>
   );
 };

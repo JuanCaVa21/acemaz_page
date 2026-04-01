@@ -82,17 +82,10 @@ const Index = () => (
 
     {/* Featured Products */}
     <section className="container pb-20">
-      <div className="flex items-center justify-between mb-8">
-        <h2 className="font-display text-2xl md:text-3xl font-bold">Productos Destacados</h2>
-        <Button variant="ghost" asChild>
-          <Link to="/catalogo">Ver todos <ArrowRight className="ml-1 h-4 w-4" /></Link>
-        </Button>
-      </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {featuredProducts.map((p) => (
-          <ProductCard key={p.id} product={p} />
-        ))}
-      </div>
+      <RecommendationsSection
+        title="Productos Destacados"
+        subtitle="Seleccionados especialmente para ti"
+      />
     </section>
   </div>
 );
