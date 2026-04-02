@@ -15,7 +15,9 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import ProductDetail from "./pages/ProductDetail";
+import About from "./pages/About";
 import NotFound from "./pages/NotFound";
+import { HistoryPage } from "./pages/History";
 
 const queryClient = new QueryClient();
 
@@ -39,6 +41,8 @@ const App = () => (
                   <Route path="/registro" element={<Register />} />
                   <Route path="/producto/:slug" element={<ProductDetail />} />
                   <Route path="/dashboard" element={<Dashboard />} />
+                  <Route path="/historial" element={<HistoryPage />} />
+                  <Route path="/nosotros" element={<About />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </main>

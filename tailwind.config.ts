@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
+        sans: ['Galano', 'Galano Grotesque', 'system-ui', 'sans-serif'],
         display: ['"Playfair Display"', 'Georgia', 'serif'],
       },
       colors: {
@@ -69,6 +69,10 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        'acemaz-red': 'hsl(var(--acemaz-red))',
+        'acemaz-green-dark': 'hsl(var(--acemaz-green-dark))',
+        'acemaz-green-light': 'hsl(var(--acemaz-green-light))',
+        'acemaz-yellow': 'hsl(var(--acemaz-yellow))',
       },
       borderRadius: {
         lg: "var(--radius)",

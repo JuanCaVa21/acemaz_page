@@ -3,14 +3,15 @@ import { ArrowRight, Truck, Shield, Clock, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ProductCard from "@/components/products/ProductCard";
 import RecommendationsSection from "@/components/products/RecommendationsSection";
-import { products, categories } from "@/data/mockData";
+import { catalogProducts } from "@/data/products";
 import heroBg from "@/assets/hero-bg.jpg";
 
-const featuredProducts = products.filter((p) => p.badge).slice(0, 4);
+const featuredProducts = catalogProducts.filter((p) => (p as any).badge).slice(0, 4);
+const categories = [...new Set(catalogProducts.map((p) => p.category))];
 
 const benefits = [
-  { icon: Truck, title: "Entrega en 24h", desc: "Recibe tus productos frescos al día siguiente" },
-  { icon: Shield, title: "Calidad Garantizada", desc: "Productos seleccionados y certificados" },
+  { icon: Truck, title: "Entregas", desc: "Para compras al por mayor" },
+  { icon: Shield, title: "Calidad Garantizada", desc: "Productos seleccionados de la mas alta calidad" },
   { icon: Clock, title: "Pedidos Fáciles", desc: "Ordena en minutos desde cualquier dispositivo" },
   { icon: Star, title: "Precios Mayoreo", desc: "Los mejores precios para tu negocio" },
 ];
@@ -26,10 +27,10 @@ const Index = () => (
       <div className="container relative py-24 md:py-36 lg:py-44">
         <div className="max-w-xl space-y-6">
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-card leading-tight">
-            Alimentos frescos directo a tu puerta
+            Manos que transforman alimentos
           </h1>
           <p className="text-card/80 text-lg md:text-xl max-w-md">
-            Distribuidora mayorista con productos de la más alta calidad para restaurantes, hoteles y hogares.
+            Distribuidora mayorista con productos de la más alta calidad.
           </p>
           <div className="flex flex-wrap gap-3">
             <Button size="lg" asChild>

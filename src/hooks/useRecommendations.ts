@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import { useAuth } from "@/context/AuthContext";
-import { products, type Product } from "@/data/mockData";
+import { catalogProducts, type Product } from "@/data/products";
 
 const API_URL = import.meta.env.VITE_API_RECOMMENDATIONS_URL || "/api/v1/recomendaciones";
 
-const fallbackProducts = products.filter((p) => p.badge).slice(0, 4);
+const fallbackProducts = catalogProducts;
 
 async function fetchRecommendations(userId?: string): Promise<Product[]> {
   const url = new URL(API_URL, window.location.origin);

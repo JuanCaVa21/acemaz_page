@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import ProductCard from "@/components/products/ProductCard";
-import { products } from "@/data/mockData";
+import { catalogProducts } from "@/data/products";
 import { useCart } from "@/context/CartContext";
 
 const slugify = (name: string) =>
@@ -24,8 +24,7 @@ const productDetails: Record<string, { origin: string; freshness: string; benefi
   "10": { origin: "Corte Angus de ranchos ganaderos de Sonora", freshness: "Madurado en seco por 21 días para máximo sabor", benefits: "Proteínas de alta calidad, hierro y zinc", longDescription: "Carne de res premium de raza Angus, criada con alimentación natural. El proceso de maduración en seco intensifica su sabor y terneza, convirtiéndola en la elección preferida de chefs profesionales." },
   "11": { origin: "Cultivada en invernaderos hidropónicos de Puebla", freshness: "Cortada y empacada el mismo día", benefits: "Baja en calorías, alta en vitaminas A y K", longDescription: "Nuestra ensalada mixta incluye una selección de lechugas frescas: romana, escarola, arúgula y espinaca baby. Lista para servir, lavada y desinfectada bajo los más altos estándares." },
   "12": { origin: "Importado de los arrozales de Tailandia", freshness: "Empacado al vacío para preservar su aroma", benefits: "Carbohidratos de liberación lenta, libre de gluten", longDescription: "El arroz jazmín se distingue por su delicado aroma floral y textura suave. Perfecto para acompañar platillos asiáticos, mariscos y como base de bowls nutritivos." },
-};
-
+}
 const ProductDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
@@ -35,15 +34,15 @@ const ProductDetail = () => {
   const product = useMemo(() => {
     if (!slug) return null;
     const idMatch = slug.match(/^(\d+)-/);
-    if (idMatch) return products.find((p) => p.id === idMatch[1]) || null;
-    return products.find((p) => slugify(p.name) === slug) || null;
+    if (idMatch) return catalogProducts.find((p) => p.id === idMatch[1]) || null;
+    return catalogProducts.find((p) => slugify(p.name) === slug) || null;
   }, [slug]);
 
   const details = product ? productDetails[product.id] : null;
 
   const relatedProducts = useMemo(() => {
     if (!product) return [];
-    return products
+    return catalogProducts
       .filter((p) => p.id !== product.id && p.category === product.category)
       .slice(0, 4);
   }, [product]);
@@ -51,7 +50,7 @@ const ProductDetail = () => {
   const extraRelated = useMemo(() => {
     if (relatedProducts.length >= 4 || !product) return relatedProducts;
     const ids = new Set([product.id, ...relatedProducts.map((p) => p.id)]);
-    const extras = products.filter((p) => !ids.has(p.id)).slice(0, 4 - relatedProducts.length);
+    const extras = catalogProducts.filter((p) => !ids.has(p.id)).slice(0, 4 - relatedProducts.length);
     return [...relatedProducts, ...extras];
   }, [relatedProducts, product]);
 

@@ -6,15 +6,21 @@ import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Slider } from "@/components/ui/slider";
 import ProductCard from "@/components/products/ProductCard";
-import { products, categories } from "@/data/mockData";
+import { catalogProducts } from "@/data/products";
+
+const categories = [...new Set(catalogProducts.map((p) => p.category))];
+
+const formatPrice = (price: number) => new Intl.NumberFormat("es-CO", { style: "currency", currency: "COP", maximumFractionDigits: 0 }).format(price);
 
 const Catalog = () => {
   const [searchParams] = useSearchParams();
   const initialCat = searchParams.get("category");
 
+  const maxPrice = useMemo(() => Math.max(...catalogProducts.map((p) => p.price)), []);
+
   const [search, setSearch] = useState("");
   const [selectedCategories, setSelectedCategories] = useState<string[]>(initialCat ? [initialCat] : []);
-  const [priceRange, setPriceRange] = useState([0, 20]);
+  const [priceRange, setPriceRange] = useState([0, maxPrice]);
   const [showFilters, setShowFilters] = useState(false);
 
   const toggleCategory = (cat: string) => {
@@ -24,7 +30,7 @@ const Catalog = () => {
   };
 
   const filtered = useMemo(() => {
-    return products.filter((p) => {
+    return catalogProducts.filter((p) => {
       const matchSearch = p.name.toLowerCase().includes(search.toLowerCase());
       const matchCat = selectedCategories.length === 0 || selectedCategories.includes(p.category);
       const matchPrice = p.price >= priceRange[0] && p.price <= priceRange[1];
@@ -49,11 +55,11 @@ const Catalog = () => {
         </div>
       </div>
       <div>
-        <h3 className="font-semibold text-sm mb-3">Precio (${priceRange[0]} - ${priceRange[1]})</h3>
+        <h3 className="font-semibold text-sm mb-3">Precio ({formatPrice(priceRange[0])} - {formatPrice(priceRange[1])})</h3>
         <Slider
           min={0}
-          max={20}
-          step={0.5}
+          max={maxPrice}
+          step={1000}
           value={priceRange}
           onValueChange={setPriceRange}
           className="mt-2"

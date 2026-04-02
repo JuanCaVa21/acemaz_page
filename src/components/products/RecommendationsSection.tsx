@@ -4,9 +4,6 @@ import { Button } from "@/components/ui/button";
 import ProductCard from "@/components/products/ProductCard";
 import RecommendationsSkeleton from "@/components/products/RecommendationsSkeleton";
 import { useRecommendations } from "@/hooks/useRecommendations";
-import { products } from "@/data/mockData";
-
-const fallback = products.filter((p) => p.badge).slice(0, 4);
 
 interface Props {
   title?: string;
@@ -19,9 +16,7 @@ const RecommendationsSection = ({
   subtitle = "Basado en tus compras anteriores",
   showViewAll = true,
 }: Props) => {
-  const { data, isLoading, isError } = useRecommendations();
-
-  const items = isError || !data?.length ? fallback : data;
+  const { data: items, isLoading, isError } = useRecommendations();
 
   return (
     <section>
@@ -39,14 +34,14 @@ const RecommendationsSection = ({
         <RecommendationsSkeleton />
       ) : (
         <>
-          {isError && (
+          {(isError || !items || items.length === 0) && (
             <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4 p-3 rounded-lg bg-muted/50">
               <AlertCircle className="h-4 w-4 shrink-0" />
-              <span>No pudimos cargar recomendaciones personalizadas. Mostrando productos populares.</span>
+              <span>No hay recomendaciones disponibles por ahora. ¡Explora nuestro catálogo para encontrar algo que te guste!</span>
             </div>
           )}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {items.map((p) => (
+            {items?.map((p) => (
               <ProductCard key={p.id} product={p} />
             ))}
           </div>

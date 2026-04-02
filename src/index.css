@@ -1,10 +1,45 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Playfair+Display:wght@600;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
+  @font-face {
+    font-family: 'Galano';
+    src: url('/fonts/GalanoGrotesqueAltRegular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Galano Grotesque';
+    src: url('/fonts/GalanoGrotesqueAltRegular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Galano Grotesque';
+    src: url('/fonts/GalanoGrotesqueAltMedium.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Galano Grotesque';
+    src: url('/fonts/GalanoGrotesqueAltSemiBold.otf') format('opentype');
+    font-weight: 600;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Galano Grotesque';
+    src: url('/fonts/GalanoGrotesqueAltBold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Galano Grotesque';
+    src: url('/fonts/GalanoGrotesqueAltBlack.otf') format('opentype');
+    font-weight: 900;
+    font-style: normal;
+  }
+
   :root {
     --background: 40 33% 98%;
     --foreground: 30 10% 15%;
@@ -15,40 +50,46 @@
     --popover: 0 0% 100%;
     --popover-foreground: 30 10% 15%;
 
-    --primary: 142 50% 36%;
+    --primary: 151 90% 34%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 40 30% 94%;
-    --secondary-foreground: 30 10% 25%;
+    --secondary: 51 100% 50%;
+    --secondary-foreground: 30 10% 15%;
 
     --muted: 40 20% 95%;
     --muted-foreground: 30 8% 50%;
 
-    --accent: 36 80% 52%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 51 100% 50%;
+    --accent-foreground: 30 10% 15%;
 
-    --destructive: 0 72% 51%;
+    --destructive: 356 80% 51%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 40 15% 89%;
     --input: 40 15% 89%;
-    --ring: 142 50% 36%;
+    --ring: 151 90% 34%;
 
     --radius: 0.625rem;
 
     --sidebar-background: 142 25% 97%;
     --sidebar-foreground: 30 10% 25%;
-    --sidebar-primary: 142 50% 36%;
+    --sidebar-primary: 151 90% 34%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 142 20% 93%;
     --sidebar-accent-foreground: 30 10% 25%;
     --sidebar-border: 40 15% 89%;
-    --sidebar-ring: 142 50% 36%;
+    --sidebar-ring: 151 90% 34%;
 
     --success: 142 60% 42%;
     --success-foreground: 0 0% 100%;
     --warning: 36 80% 52%;
     --warning-foreground: 30 10% 15%;
+
+    /* Acemaz Palette */
+    --acemaz-red: 356 80% 51%;
+    --acemaz-green-dark: 152 96% 25%;
+    --acemaz-green-light: 151 90% 34%;
+    --acemaz-yellow: 51 100% 50%;
   }
 
   .dark {
@@ -58,19 +99,31 @@
     --card-foreground: 40 20% 95%;
     --popover: 30 10% 12%;
     --popover-foreground: 40 20% 95%;
-    --primary: 142 50% 42%;
+    
+    --primary: 151 90% 40%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 30 10% 18%;
-    --secondary-foreground: 40 20% 90%;
+
+    --secondary: 51 100% 45%;
+    --secondary-foreground: 30 10% 15%;
+
     --muted: 30 10% 18%;
     --muted-foreground: 40 10% 55%;
-    --accent: 36 80% 52%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 62.8% 30.6%;
+
+    --accent: 51 100% 45%;
+    --accent-foreground: 30 10% 15%;
+
+    --destructive: 356 80% 45%;
     --destructive-foreground: 0 0% 100%;
+    
     --border: 30 10% 22%;
     --input: 30 10% 22%;
-    --ring: 142 50% 42%;
+    --ring: 151 90% 40%;
+
+    /* Acemaz Palette */
+    --acemaz-red: 356 80% 51%;
+    --acemaz-green-dark: 152 96% 25%;
+    --acemaz-green-light: 151 90% 34%;
+    --acemaz-yellow: 51 100% 50%;
   }
 }
 
